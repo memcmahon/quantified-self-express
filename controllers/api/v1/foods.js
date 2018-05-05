@@ -10,6 +10,14 @@ const getFoods = (req, res) => {
     })
 }
 
+const getFood = (req, res) => {
+  Food.find(req.params["id"])
+    .then((data) => {
+      res.status(200).json(data.rows[0])
+    })
+}
+
 module.exports = {
   getFoods,
+  getFood,
 }
