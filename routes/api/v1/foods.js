@@ -11,4 +11,8 @@ app.get('/', (req, res) => {
   foodsController.getFoods(req, res);
 });
 
+app.get('/:id', (req, res) => {
+  foodsController.getFood(req, res);
+})
+
 module.exports = app;

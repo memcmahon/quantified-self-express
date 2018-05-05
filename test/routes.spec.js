@@ -69,4 +69,18 @@ describe('API Routes', () => {
       });
     });
   });
+
+  describe('GET /api/v1/foods/:id', () => {
+    it('should return one food item', () => {
+      return chai.request(server)
+      .get('/api/v1/foods/1')
+      .then((response) => {
+        response.should.have.status(200);
+        response.should.be.json;
+        response.body.should.be.a('object');
+        response.body.should.have.property('name');
+        response.body.should.have.property('calories');
+      });
+    });
+  });
 });
