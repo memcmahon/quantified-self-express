@@ -63,11 +63,11 @@ describe('API Routes', () => {
         response.should.have.status(200);
         response.should.be.json;
         response.body.should.be.a('array');
-        response.body.length.should.equal(4);
+        response.body.length.should.equal(1);
         response.body[0].should.have.property('name');
         response.body[0].should.have.property('foods');
-        response.body[0]['name'].should.equal('Breakfast');
-        response.body[0]['foods'].should.deep.equal([]);
+        response.body[0]['name'].should.equal('Lunch');
+        response.body[0]['foods'].should.deep.equal([{"calories": 40, "id": 1, "name": "Oranges"}, {"calories": 35, "id": 2, "name": "Bananas"}]);
       });
     });
   });
