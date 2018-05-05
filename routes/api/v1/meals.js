@@ -5,10 +5,10 @@ const database = require('knex')(configuration);
 var express = require('express');
 var app = express.Router();
 
-const foodsController = require('../../../controllers/api/v1/foods');
+const mealsController = require('../../../controllers/api/v1/meals');
 
 app.get('/', (req, res) => {
-  foodsController.getFoods(req, res);
+  mealsController.getMeals(req, res);
 });
 
 module.exports = app;
