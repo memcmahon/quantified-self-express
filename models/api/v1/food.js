@@ -3,7 +3,7 @@ const configuration = require('../../../knexfile')[environment];
 const database = require('knex')(configuration);
 
 const all = () => {
-  return database.raw('SELECT * FROM foods')
+  return database.raw('SELECT id, name, calories FROM foods')
 };
 
 module.exports = {
