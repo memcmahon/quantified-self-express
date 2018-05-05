@@ -6,6 +6,11 @@ const all = () => {
   return database.raw('SELECT id, name, calories FROM foods')
 };
 
+const find = (id) => {
+  return database.raw('SELECT id, name, calories FROM foods WHERE foods.id = ?', id)
+};
+
 module.exports = {
   all,
+  find,
 }
