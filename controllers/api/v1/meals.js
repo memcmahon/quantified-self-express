@@ -8,8 +8,16 @@ const getMeals = (req, res) => {
     .then((data) => {
       res.status(200).json(data.rows)
     })
+};
+
+const getMeal = (req, res) => {
+  Meal.find(req.params["id"])
+    .then((data) => {
+      res.status(200).json(data.rows[0])
+    })
 }
 
 module.exports = {
   getMeals,
+  getMeal
 }
