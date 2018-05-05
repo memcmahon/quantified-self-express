@@ -65,9 +65,7 @@ describe('API Routes', () => {
         response.body.should.be.a('array');
         response.body.length.should.equal(1);
         response.body[0].should.have.property('name');
-        response.body[0].should.have.property('foods');
-        response.body[0]['name'].should.equal('Lunch');
-        response.body[0]['foods'].should.deep.equal([{"calories": 40, "id": 1, "name": "Oranges"}, {"calories": 35, "id": 2, "name": "Bananas"}]);
+        response.body[0]['foods'].length.should.equal(2);
       });
     });
   });
