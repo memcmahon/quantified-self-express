@@ -5,7 +5,7 @@ const database = require('knex')(configuration);
 var express = require('express');
 var app = express.Router();
 
-const foodsController = require('../../../controllers/api/v1/foods')
+const foodsController = require('../../../controllers/api/v1/foods');
 
 app.get('/', (req, res) => {
   foodsController.getFoods(req, res);
