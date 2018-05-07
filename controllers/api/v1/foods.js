@@ -24,8 +24,16 @@ const createFood = (req, res) => {
     })
 };
 
+const updateFood = (req, res) => {
+  Food.update(req.params["id"], req.body.name, req.body.calories)
+    .then((data) => {
+      res.status(200).json(data.rows[0])
+    })
+};
+
 module.exports = {
   getFoods,
   getFood,
-  createFood
+  createFood,
+  updateFood
 }
