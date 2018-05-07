@@ -19,7 +19,9 @@ describe('Client Routes', () => {
   });
 });
 
-describe('API Routes', () => {
+describe('API Routes', function() {
+  this.timeout (0);
+
   before((done) => {
     database.migrate.latest()
     .then(() => done())
@@ -46,7 +48,7 @@ describe('API Routes', () => {
         response.should.have.status(200);
         response.should.be.json;
         response.body.should.be.a('array');
-        response.body.length.should.equal(2);
+        response.body.length.should.equal(3);
         response.body[0].should.have.property('name');
         response.body[0].should.have.property('calories');
         response.body[0]['name'].should.equal('Bananas');
@@ -139,6 +141,22 @@ describe('API Routes', () => {
       .then((response) => {
         response.body.length.should.equal(2);
       });
+    });
+  });
+
+  describe('DELETE /api/v1/foods/:id', () => {
+    it('should delete that food item', () => {
+      return chai.request(server)
+      .delete('/api/v1/foods/3')
+      .then((response) => {
+        response.should.have.status(204)
+      });
+
+      // return chai.request(server)
+      // .get('/api/v1/foods')
+      // .then((response) => {
+      //   response.body.length.should.equal(2);
+      // });
     });
   });
 });
