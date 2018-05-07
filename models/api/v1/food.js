@@ -20,10 +20,15 @@ const update = (id, name, calories) => {
                       WHERE id = ${id} RETURNING id, name, calories`)
 };
 
+const destroy = (id) => {
+    return database.raw(`DELETE FROM foods WHERE id = ${id}`)
+};
+
 
 module.exports = {
   all,
   find,
   create,
-  update
+  update,
+  destroy
 }
