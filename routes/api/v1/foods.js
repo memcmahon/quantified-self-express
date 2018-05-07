@@ -19,4 +19,8 @@ app.post('/', (req, res) => {
   foodsController.createFood(req, res);
 });
 
+app.patch('/:id', (req, res) => {
+  foodsController.updateFood(req, res);
+});
+
 module.exports = app;
