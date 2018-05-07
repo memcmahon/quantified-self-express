@@ -119,4 +119,26 @@ describe('API Routes', () => {
       });
     });
   });
+
+  describe('PATCH /api/v1/foods/:id', () => {
+    it('should update that food item', () => {
+      return chai.request(server)
+      .patch('/api/v1/foods/1')
+      .send({ 'name': 'Biscuits', 'calories': 250 })
+      .then((response) => {
+        response.should.be.json;
+        response.body.should.be.a('object');
+        response.body.should.have.property('name');
+        response.body.should.have.property('calories');
+        response.body['name'].should.equal('Biscuits');
+        response.body['calories'].should.equal(250);
+      });
+
+      return chai.request(server)
+      .get('/api/v1/foods')
+      .then((response) => {
+        response.body.length.should.equal(2);
+      });
+    });
+  });
 });
