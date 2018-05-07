@@ -146,17 +146,30 @@ describe('API Routes', function() {
 
   describe('DELETE /api/v1/foods/:id', () => {
     it('should delete that food item', () => {
-      return chai.request(server)
+      chai.request(server)
       .delete('/api/v1/foods/3')
       .then((response) => {
         response.should.have.status(204)
       });
 
-      // return chai.request(server)
-      // .get('/api/v1/foods')
-      // .then((response) => {
-      //   response.body.length.should.equal(2);
-      // });
+      return chai.request(server)
+      .get('/api/v1/foods')
+      .then((response) => {
+        response.body.length.should.equal(2);
+      });
     });
   });
+
+  describe('POST /api/v1/meals/:id/foods/:id', () => {
+    it('should add a mealfood item', () => {
+      return chai.request(server)
+      .post('/api/v1/meals/1/foods/3')
+      .then((response) => {
+        console.log(response.body);
+        response.should.have.status(201);
+        response.body.should.have.property('message');
+        response.body['message'].should.include('Successfully added Berries')
+      })
+    })
+  })
 });
