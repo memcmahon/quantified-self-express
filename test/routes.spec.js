@@ -169,7 +169,19 @@ describe('API Routes', function() {
         response.should.have.status(201);
         response.body.should.have.property('message');
         response.body['message'].should.include('Successfully added Berries')
-      })
-    })
-  })
+      });
+    });
+  });
+
+  describe('DELETE /api/v1/meals/:id/foods/:id', () => {
+    it('should delete a mealfood item', () => {
+      return chai.request(server)
+      .delete('/api/v1/meals/1/foods/1')
+      .then((response) => {
+        console.log(response.body);
+        response.body.should.have.property('message');
+        response.body['message'].should.include('Successfully deleted Bananas')
+      });
+    });
+  });
 });
