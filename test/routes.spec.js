@@ -97,4 +97,26 @@ describe('API Routes', () => {
       });
     });
   });
+
+  describe('POST /api/v1/foods', () => {
+    it('should create a new food item', () => {
+      return chai.request(server)
+      .post('/api/v1/foods')
+      .send({ 'name': 'Biscuits', 'calories': 250 })
+      .then((response) => {
+        response.should.be.json;
+        response.body.should.be.a('object');
+        response.body.should.have.property('name');
+        response.body.should.have.property('calories');
+        response.body['name'].should.equal('Biscuits');
+        response.body['calories'].should.equal(250);
+      });
+
+      return chai.request(server)
+      .get('/api/v1/foods')
+      .then((response) => {
+        response.body.length.should.equal(3);
+      });
+    });
+  });
 });

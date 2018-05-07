@@ -13,6 +13,10 @@ app.get('/', (req, res) => {
 
 app.get('/:id', (req, res) => {
   foodsController.getFood(req, res);
-})
+});
+
+app.post('/', (req, res) => {
+  foodsController.createFood(req, res);
+});
 
 module.exports = app;
