@@ -6,7 +6,10 @@ exports.seed = function(knex, Promise) {
       ["Bananas", 35, new Date, new Date]),
 
       knex.raw('INSERT INTO foods (name, calories, created_at, updated_at) VALUES(?, ?, ?, ?)',
-      ["Oranges", 40, new Date, new Date])
+      ["Oranges", 40, new Date, new Date]),
+
+      knex.raw('INSERT INTO foods (name, calories, created_at, updated_at) VALUES(?, ?, ?, ?)',
+      ["Berries", 50, new Date, new Date])
     ])
   })
 }
