@@ -8,19 +8,23 @@ var app = express.Router();
 const foodsController = require('../../../controllers/api/v1/foods');
 
 app.get('/', (req, res) => {
-  foodsController.getFoods(req, res);
+  foodsController.index(req, res);
 });
 
 app.get('/:id', (req, res) => {
-  foodsController.getFood(req, res);
+  foodsController.show(req, res);
 });
 
 app.post('/', (req, res) => {
-  foodsController.createFood(req, res);
+  foodsController.create(req, res);
 });
 
 app.patch('/:id', (req, res) => {
-  foodsController.updateFood(req, res);
+  foodsController.update(req, res);
 });
+
+app.delete('/:id', (req, res) => {
+  foodsController.destroy(req, res);
+})
 
 module.exports = app;
