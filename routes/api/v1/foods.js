@@ -4,10 +4,12 @@ const database = require('knex')(configuration);
 
 var express = require('express');
 var app = express.Router();
+var cors = require('cors');
+app.use(cors());
 
 const foodsController = require('../../../controllers/api/v1/foods');
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
   foodsController.index(req, res);
 });
 
