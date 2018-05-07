@@ -18,14 +18,14 @@ const show = (req, res) => {
 };
 
 const create = (req, res) => {
-  Food.create(req.body.name, req.body.calories)
+  Food.create(req.body.food.name, req.body.food.calories)
     .then((data) => {
       res.status(200).json(data.rows[0])
     })
 };
 
 const update = (req, res) => {
-  Food.update(req.params.id, req.body.name, req.body.calories)
+  Food.update(req.params.id, req.body.food.name, req.body.food.calories)
     .then((data) => {
       res.status(200).json(data.rows[0])
     })

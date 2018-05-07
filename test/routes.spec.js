@@ -104,7 +104,7 @@ describe('API Routes', function() {
     it('should create a new food item', () => {
       return chai.request(server)
       .post('/api/v1/foods')
-      .send({ 'name': 'Biscuits', 'calories': 250 })
+      .send({'food': { 'name': 'Biscuits', 'calories': 250 }})
       .then((response) => {
         response.should.be.json;
         response.body.should.be.a('object');
@@ -126,7 +126,7 @@ describe('API Routes', function() {
     it('should update that food item', () => {
       return chai.request(server)
       .patch('/api/v1/foods/1')
-      .send({ 'name': 'Biscuits', 'calories': 250 })
+      .send({'food': { 'name': 'Biscuits', 'calories': 250 }})
       .then((response) => {
         response.should.be.json;
         response.body.should.be.a('object');
