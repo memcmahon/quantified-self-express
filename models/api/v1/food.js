@@ -15,9 +15,15 @@ const create = (name, calories) => {
   [name, calories, new Date, new Date])
 };
 
+const update = (id, name, calories) => {
+  return database.raw(`UPDATE foods SET name = '${name}', calories = '${calories}'
+                      WHERE id = ${id} RETURNING id, name, calories`)
+};
+
 
 module.exports = {
   all,
   find,
-  create
+  create,
+  update
 }
