@@ -84,6 +84,14 @@ describe('API Routes', function() {
         response.body.should.have.property('calories');
       });
     });
+
+    it('should return 404 if food not found', () => {
+      return chai.request(server)
+      .get('/api/v1/foods/13')
+      .then((response) => {
+        response.should.have.status(404);
+      });
+    });
   });
 
   describe('GET /api/v1/meals/:id/foods', () => {
