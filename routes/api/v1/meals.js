@@ -18,6 +18,10 @@ app.get('/:id/foods', (req, res) => {
 
 app.post('/:meal_id/foods/:id', (req, res) => {
   mealFoodsController.create(req, res);
+});
+
+app.delete('/:meal_id/foods/:id', (req, res) => {
+  mealFoodsController.destroy(req, res);
 })
 
 module.exports = app;
