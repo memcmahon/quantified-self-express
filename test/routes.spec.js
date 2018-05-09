@@ -20,8 +20,6 @@ describe('Client Routes', () => {
 });
 
 describe('API Routes', function() {
-  this.timeout (0);
-
   before((done) => {
     database.migrate.latest()
     .then(() => done())
@@ -84,6 +82,14 @@ describe('API Routes', function() {
         response.body.should.have.property('calories');
       });
     });
+
+    it('should return 404 if food not found', () => {
+      return chai.request(server)
+      .get('/api/v1/foods/13')
+      .then((response) => {
+        response.should.have.status(404);
+      });
+    });
   });
 
   describe('GET /api/v1/meals/:id/foods', () => {
@@ -102,7 +108,7 @@ describe('API Routes', function() {
 
   describe('POST /api/v1/foods', () => {
     it('should create a new food item', () => {
-      return chai.request(server)
+      chai.request(server)
       .post('/api/v1/foods')
       .send({'food': { 'name': 'Biscuits', 'calories': 250 }})
       .then((response) => {
@@ -117,7 +123,7 @@ describe('API Routes', function() {
       return chai.request(server)
       .get('/api/v1/foods')
       .then((response) => {
-        response.body.length.should.equal(3);
+        response.body.length.should.equal(4);
       });
     });
   });
@@ -155,7 +161,7 @@ describe('API Routes', function() {
       return chai.request(server)
       .get('/api/v1/foods')
       .then((response) => {
-        response.body.length.should.equal(2);
+        response.body.length.should.equal(3);
       });
     });
   });

@@ -13,28 +13,40 @@ const index = (req, res) => {
 const show = (req, res) => {
   Food.find(req.params.id)
     .then((data) => {
-      res.status(200).json(data.rows[0])
-    })
+      if(data.rows.length === 0) {
+        res.sendStatus(404);
+      } else {
+        res.status(200).json(data.rows[0]);
+      };
+    });
 };
 
 const create = (req, res) => {
-  Food.create(req.body.food.name, req.body.food.calories)
+  if(req.body.food && req.body.food.name && req.body.food.calories) {
+    Food.create(req.body.food.name, req.body.food.calories)
     .then((data) => {
       res.status(200).json(data.rows[0])
     })
+  } else {
+    res.sendStatus(400);
+  }
 };
 
 const update = (req, res) => {
-  Food.update(req.params.id, req.body.food.name, req.body.food.calories)
+  if(req.body.food && req.body.food.name && req.body.food.calories) {
+    Food.update(req.params.id, req.body.food.name, req.body.food.calories)
     .then((data) => {
       res.status(200).json(data.rows[0])
     })
+  } else {
+    res.sendStatus(400);
+  }
 };
 
 const destroy = (req, res) => {
   Food.destroy(req.params.id)
     .then((data) => {
-      res.sendStatus(204)
+      res.sendStatus(204);
     })
 };
 
