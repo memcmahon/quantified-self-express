@@ -14,11 +14,11 @@ If you would like to clone and use this repo locally, please follow the steps be
 
 `$ npm install`
 
-`$ psql 
+``$ psql 
 
 CREATE DATABASE quantified_self_express;
 
-CREATE DATABASE quantified_self_express_test;`
+CREATE DATABASE quantified_self_express_test;``
 
 `$ knex migrate:latest`
 
