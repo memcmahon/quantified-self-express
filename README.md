@@ -11,12 +11,19 @@ If you would like to clone and use this repo locally, please follow the steps be
 `$ git clone https://github.com/memcmahon/quantified-self-express.git`
 
 `$ cd quantified-self-express`
+
 `$ npm install`
+
 `$ psql 
+
 CREATE DATABASE quantified_self_express;
+
 CREATE DATABASE quantified_self_express_test;`
+
 `$ knex migrate:latest`
+
 `$ knex seed:run`
+
 `$ npm start`
 
 You can now navigate to `localhost:3000` and use the [endpoints](#endpoints) described below
