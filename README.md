@@ -9,6 +9,7 @@ The [endpoints](#endpoints) below can be explored using [curl](https://curl.haxx
 If you would like to clone and use this repo locally, please follow the steps below:
 
 `$ git clone https://github.com/memcmahon/quantified-self-express.git`
+
 `$ cd quantified-self-express`
 `$ npm install`
 `$ psql 
